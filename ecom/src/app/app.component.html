@@ -1,0 +1,382 @@
+<button class="button button2" type="submit" (click)="categorybtn()">category</button>
+
+<button class="button button2"  type="submit" (click)="brandbtn()">Brand</button>
+<button class="button button2" type="submit" (click)="discountbtn()"> dynamic Discount</button>
+<button class="button button2" type="submit" (click)="ratingsbtn()"> dynamic Rating</button>
+<button class="button button2" type="submit" (click)="pricebtn()"> dynamic Price</button>
+
+<hr>
+<button class="button button2"  type="submit" (click)="categorydynamicbutton()">category dynamic</button>
+<button class="button button2"  type="submit" (click)="branddynamicbutton()">Brand dynamic</button>
+<!-- <button class="button button2"  type="submit" (click)="when_dicount_button_click()">Discount dynamic</button> -->
+
+
+<!-- //==============================dynamic data of the category================================== -->
+<!-- ***************************************div to display the checkbox******************************* -->
+<div *ngIf="dynamiccategoryflag"> 
+  <fieldset>
+    <legend>Choose your Category</legend>
+    <div *ngFor="let data of category_dynamic_data">
+
+      <input type="checkbox" [id]="data" #idofdiv name="{{data}}" value="{{data}}" [(ngModel)]="data.checkeditem"
+      (ngModelChange)="filterresultcategory(data,$event)">
+      <label [for]="data">{{ data }}</label>
+    </div>
+  <!-- <button class="button button3" >Search</button> -->
+  </fieldset>
+</div>
+
+<!-- ***************************************div to display the results of category******************************* -->
+
+<div *ngIf="dynamic_category_resulrflag">
+
+  <fieldset>
+    <legend>hello</legend>
+    
+    <div class="scroll">
+      <div class="main_card">
+        <div class="product-card" *ngFor="let data of forlooparray; index as i" border="5px" >
+          
+          <h1>{{i+1}}</h1>
+          <img src="{{data.thumbnail}}" alt="Product Image" height="300px" width="300px">
+          <h3 class="product-title">{{data.title}}</h3>
+          <p class="product-description">{{data.description}}</p>
+          <span class="product-price"><h3>$ {{data.price}}</h3></span>
+          <button class="buy-button" (click)="addtocart(data)">Buy Now</button>
+          
+        </div>
+      </div>
+    </div>
+    <button class="button button1" type="submit" (click)="gotochild()">final submit</button>
+
+  </fieldset>
+</div>
+
+<!-- ***************************************div to display the checkbox of brand******************************* -->
+
+<div *ngIf="dynamic_flag_of_brand">
+
+    <fieldset>
+      <legend>select brand to check</legend>
+      <!-- {{category_dynamic_data | json}} -->
+<label>Click to select Category first>>>>>>>>>>>>>>>>></label>
+<select #cricket (change)="when_drop_value_is_selected()" [(ngModel)]="drop_down_value" required> 
+  <!-- <option value="default">Select Category first</option>  -->
+  <option *ngFor="let player of category_dynamic_data" > 
+      {{player}} 
+  </option> 
+</select> 
+<div *ngFor="let data of brands_array">
+  <input type="checkbox" [id]="data" #idofdiv name="{{data}}" value="{{data}}" [(ngModel)]="data.checkeditem"
+  (ngModelChange)="when_checkbox_of_Brand_is_selected(data,$event)">
+  <label [for]="data">{{ data.brand }}</label>
+</div>
+</fieldset>
+</div>
+
+<!-- ***************************************div to result of brand******************************* -->
+
+<div *ngIf="dynamic_brand_resultflag"> 
+
+  <fieldset>
+    <legend>Your Results are here</legend>
+    <!-- {{forlooparray | json}} -->
+
+
+    <div class="scroll">
+      <div class="main_card">
+        <div class="product-card" *ngFor="let data of forlooparray; index as i" border="5px" >
+          
+          <h1>{{i+1}}</h1>
+          <img src="{{data.thumbnail}}" alt="Product Image" height="300px" width="300px">
+          <h3 class="product-title">{{data.title}}</h3>
+          <p class="product-description">{{data.description}}</p>
+          <span class="product-price"><h3>$ {{data.price}}</h3></span>
+          <button class="buy-button" (click)="addtocart(data)">Buy Now</button>
+          
+        </div>
+      </div>
+    </div>
+
+    <button class="button button1" type="submit" (click)="gotochild()">final submit</button>
+
+  </fieldset>
+
+</div>
+
+<!-- ***************************************div to display the checkbox******************************* -->
+
+<div *ngIf="dynamic_discount_resultflag"> 
+<fieldset>
+  <legend>Select your discount Price</legend>
+
+  
+<input type="checkbox" [(ngModel)]="discount_upto10">
+<label>0-10</label>
+<input type="checkbox" [(ngModel)]="discount_upto20">
+<label>10-20</label>
+<input type="checkbox" [(ngModel)]="discount_upto30">
+<label>10-20</label>
+<br>
+<button type="submit" (click)="dynamic_discount_clicked()">Submit</button>
+</fieldset>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- //=================================================================================================== -->
+
+
+<!-- ============================================================================================== -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--==All static Data here============================================================================================ -->
+
+<div *ngIf="flagcategory">
+  <fieldset>
+  <legend>Choose your Category</legend>
+
+  
+  <input type="checkbox" id="smartphones" name="sm" value="sm" [(ngModel)]="checksmartphone">
+  <label for="vehicle1">Smart Phone</label><br>
+
+  <input type="checkbox" id="laptops" name="laptops" value="laptops" [(ngModel)]="checklaptop">
+  <label for="vehicle1">Laptops</label><br>
+
+  <input type="checkbox" id="fragrances" name="fragrances" value="fragrances" [(ngModel)]="checkfragrances">
+  <label for="vehicle1">Fragrances</label><br>
+
+  <input type="checkbox" id="skincare" name="skincare" value="skincare" [(ngModel)]="checkskincare">
+  <label for="vehicle1">Skin Care</label><br>
+
+  <input type="checkbox" id="groceries" name="groceries" value="groceries"[(ngModel)]="checkgroceries">
+  <label for="vehicle1">Groceries</label><br>
+
+  <input type="checkbox" id="home-decoration" name="home-decoration" value="home-decoration" [(ngModel)]="checkhomedecore">
+  <label for="vehicle1">home-decoration</label><br>
+
+  <button class="button button1" type="submit" (click)="categoryselectedbtn()">Submit</button>
+</fieldset>
+
+<fieldset *ngIf="fieldsetofdivflag">
+  <legend>ALL SEARCHED RESULTS</legend>
+
+ <div class="scroll">
+        <div class="main_card">
+      
+          <div class="product-card" *ngFor="let data of forlooparray; index as i" border="5px" >
+
+              <h1>{{i+1}}</h1>
+              <img src="{{data.thumbnail}}" alt="Product Image" height="300px" width="300px">
+              <h3 class="product-title">{{data.title}}</h3>
+              <p class="product-description">{{data.description}}</p>
+              <span class="product-price"><h3>$ {{data.price}}</h3></span>
+              <button class="buy-button" (click)="addtocart(data)">Buy Now</button>
+              
+            </div>
+
+        
+          {{addcartdata  | json}}
+        </div>
+
+      
+</div>
+  <button class="button button1" type="submit" (click)="gotochild()" >final submit</button> <label>{{xyz}}</label>
+  {{xyz | json}}
+</fieldset>
+
+
+ 
+
+
+</div>
+
+<div *ngIf="flagdiscount">
+  <fieldset>
+    <legend>Choose your Discount</legend>
+    <input type="checkbox" id="groceries" name="gdiscount" value="zerototen"[(ngModel)]="discount1">
+    <label >0-10</label><br>
+
+    <input type="checkbox" id="groceries" name="discount" value="eleventotwenty"[(ngModel)]="discount2">
+    <label >11-20</label><br>
+  <button class="button button1" type="submit" (click)="discountselectedbutton()">Submit</button>
+
+  </fieldset>
+
+
+  <fieldset *ngIf="fieldsetofdivflag">
+    <legend>ALL SEARCHED RESULTS</legend>
+    <div class="scroll">
+
+      <div class="main_card">
+        
+        <div class="product-card" *ngFor="let data of forlooparray; index as i" border="5px" >
+          <h1>{{i+1}}</h1>
+          <img src="{{data.thumbnail}}" alt="Product Image" height="300px" width="300px">
+          <h3 class="product-title">{{data.title}}</h3>
+          <p class="product-description">{{data.description}}</p>
+          <span class="product-price"><h3>$ {{data.price}}</h3></span>
+          <button class="buy-button" (click)="addtocart(data)">Buy Now</button>
+        </div>
+        {{addcartdata  | json}}
+      </div>
+      
+    </div>
+    
+    <button class="button button1" type="submit" (click)="gotochild()">final submit</button>
+  </fieldset>
+  
+</div>  
+
+<div *ngIf="flagrating">
+  <fieldset>
+    <legend>select your ratings</legend>
+
+    <input type="checkbox" id="groceries" name="rating" value="zerototen"[(ngModel)]="rating1">
+    <label >1</label><br>
+
+    <input type="checkbox" id="groceries" name="rating" value="eleventotwenty"[(ngModel)]="rating2">
+  <label >2</label><br>
+
+  <input type="checkbox" id="groceries" name="rating" value="zerototen"[(ngModel)]="rating3">
+    <label >3</label><br>
+
+    <input type="checkbox" id="groceries" name="rating" value="eleventotwenty"[(ngModel)]="rating4">
+  <label >4</label><br>
+
+  <input type="checkbox" id="groceries" name="rating" value="zerototen"[(ngModel)]="rating5">
+    <label >5</label><br>
+    <button class="button button1" type="submit" (click)="ratingbtnselectedbtn()">Submit</button>
+
+   
+
+
+  </fieldset>
+
+
+  <fieldset *ngIf="fieldsetofdivflag">
+    <legend>ALL SEARCHED RESULTS</legend>
+    <div class="scroll">
+      <div class="main_card">
+        
+        <div class="product-card" *ngFor="let data of forlooparray; index as i" border="5px" >
+          <h1>{{i+1}}</h1>
+          <img src="{{data.thumbnail}}" alt="Product Image" height="300px" width="300px">
+          <h3 class="product-title">{{data.title}}</h3>
+          <p class="product-description">{{data.description}}</p>
+          <span class="product-price"><h3>$ {{data.price}}</h3></span>
+          <button class="buy-button" (click)="addtocart(data)">Buy Now</button>
+        </div>
+        
+        {{addcartdata  | json}}
+      </div>
+      
+    </div>  
+    <button class="button button1" type="submit"(click)="gotochild()">final submit</button>
+  </fieldset>
+
+
+
+</div>
+
+<div *ngIf="flagprice">
+  <fieldset>
+    <legend>select your Price</legend>
+    <input type="checkbox" id="groceries" name="under500" value="under500"[(ngModel)]="under500">
+    <label > Under 500</label><br>
+
+    <input type="checkbox" id="groceries" name="under1000" value="under1000"[(ngModel)]="under1000">
+  <label > Under 1000</label><br>
+
+  <input type="checkbox" id="groceries" name="under1500" value="under1500"[(ngModel)]="under1500">
+    <label > Under 1500</label><br>
+    <button class="button button1" type="submit" (click)="pricebtnselectedbtn()">Submit</button>
+
+  </fieldset>
+
+
+
+
+  <fieldset *ngIf="fieldsetofdivflag">
+    <legend>ALL SEARCHED RESULTS</legend>
+    <div class="scroll">
+      <div class="main_card">
+        
+        <div class="product-card" *ngFor="let data of forlooparray; index as i" border="5px" >
+          <h1>{{i+1}}</h1>
+          <img src="{{data.thumbnail}}" alt="Product Image" height="300px" width="300px">
+          <h3 class="product-title">{{data.title}}</h3>
+          <p class="product-description">{{data.description}}</p>
+          <span class="product-price"><h3>$ {{data.price}}</h3></span>
+          <button class="buy-button" (click)="addtocart(data)">Buy Now</button>
+        </div>
+        
+        {{addcartdata  | json}}
+      </div>
+    </div>
+    <button class="button button1" type="submit" (click)="gotochild()">final submit</button>
+    </fieldset>
+
+</div>
+
+
+<div *ngIf="childcomponent1">
+<app-child1 [addcartdata]="addcartdata" [vavalueoftotal]="valueoftotal">
+
+</app-child1>
+</div>
