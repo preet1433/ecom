@@ -21,9 +21,6 @@ export class AppComponent  implements OnInit{
    
       });
       this.arrayofobjectdat=this.json.products
-  
-  
-      
     }
 ///======================================================================
   [x: string]: any;
@@ -448,6 +445,7 @@ addtocart(data:any){
   // }
   this.addcartdata.push(data)
   console.log(this.addcartdata)
+
 }
 
 

@@ -18,11 +18,11 @@
     <legend>Choose your Category</legend>
     <div *ngFor="let data of category_dynamic_data">
 
-      <input type="checkbox" [id]="data" #idofdiv name="{{data}}" value="{{data}}" [(ngModel)]="data.checkeditem"
-      (ngModelChange)="filterresultcategory(data,$event)">
+      <input type="checkbox" [id]="data" #idofdiv name="{{data}}" value="{{data}}"
+       [(ngModel)]="data.checkeditem" (ngModelChange)="filterresultcategory(data,$event)">
       <label [for]="data">{{ data }}</label>
     </div>
-  <!-- <button class="button button3" >Search</button> -->
+  <!--   -->
   </fieldset>
 </div>
 
@@ -43,7 +43,6 @@
           <p class="product-description">{{data.description}}</p>
           <span class="product-price"><h3>$ {{data.price}}</h3></span>
           <button class="buy-button" (click)="addtocart(data)">Buy Now</button>
-          
         </div>
       </div>
     </div>
