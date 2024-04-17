@@ -39,9 +39,7 @@ final_checkOut(){
 funcofnumber( a:any){
 return a
 }
-funcofttal(a:any){
 
-}
 
 
 public qty:any

@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ApicallService {
-  gettodos1:any
   constructor(private http: HttpClient) { }
 
     jsonApiData(){
