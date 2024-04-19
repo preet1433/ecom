@@ -1,11 +1,28 @@
-import { Component, OnInit ,Input } from '@angular/core';
-
+import { Component, OnInit ,Input, Output } from '@angular/core';
+import{output,EventEmitter }from '@angular/core'
+import { ADDRCONFIG } from 'dns';
 @Component({
   selector: 'app-child1',
   templateUrl: './child1.component.html',
   styleUrl: './child1.component.css'
 })
 export class Child1Component  implements OnInit{
+
+
+
+
+  constructor(){
+    this.qty=1
+
+  }
+ngOnInit(): void {
+  this.qty=1
+  this.abcd = this.vavalueoftotal
+
+}
+@Output() get_array_from_child=new EventEmitter<string>()
+
+@Output() get_from_child_total=new EventEmitter<number>()
 
 public valueofnumber: any =0
 
@@ -25,12 +42,6 @@ final_checkOut(){
 }
 
 
-//========================================================
-//  ngOnInit(): void {
-//   //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-//   //Add 'implements OnInit' to the class.
-//   this.abcd = this.vavalueoftotal
-//  }
 
   updateTotal(): void {
     this.totalValue = this.cartdata.price * this.cartdata.qun;
@@ -39,8 +50,6 @@ final_checkOut(){
 funcofnumber( a:any){
 return a
 }
-
-
 
 public qty:any
 qtyupdate(qqty:number){
@@ -52,47 +61,36 @@ return qqty;
 
 
 
- counterValue: number = 1; // Initial value
-
-    increment(): void {
-        this.totalValue++;
-    }
-
-    decrement(): void {
-        if (this. totalValue > 1) {
-            this.totalValue--;
-        }
-    }
 
 
 
 
 
 
-
-
-
-    constructor(){
-      this.qty=1
-  
-    }
-  ngOnInit(): void {
-    this.qty=1
-    this.abcd = this.vavalueoftotal
-
-  }
 public abcd:number=0
-  KeyValueup(event:any){
+  KeyValueup(event:any, qun:any){
+    console.log("addcartdata ", this.addcartdata)
+    let final :any
+    this.addcartdata.forEach((ele:any)=>{
+      if(!final){
+        final = ele.qun * ele.price
+      }else{
+        let data = ele.qun * ele.price
+        final = final + data
+      }
+    })
+    console.log("final ", final)
+    this.abcd = final
 
-    this.fulltotal.push(event)
-//     // const abc = +event
-//     this.fulltotal =+ event 
-
-this.abcd= this.abcd + this.fulltotal.reduce(function(x:any,y:any){
-  return x+y;
-},0)
-console.log(this.abcd)
+console.log('this is abcd=>'+this.abcd)
   }
+public child_flag:boolean=true
+  final_checkout_all_flags_false(){
+this.child_flag=false
+  }
+
+
+
 }
 
 

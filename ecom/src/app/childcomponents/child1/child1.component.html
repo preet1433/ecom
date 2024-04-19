@@ -1,6 +1,6 @@
 <!-- <p>child1 works!</p> -->
 
-
+<div *ngIf="child_flag">
 <h1>Total :  ${{abcd}}</h1>
 <div class="details_show" *ngFor="let cartdata of addcartdata">
 <div  class="content" style="width: 50%; float:left" >
@@ -20,7 +20,7 @@
       <h3> Quantity:  
         <!-- <input type="number" value="1" #qtyq onkeypress="qtyupdate(qtyq.values)">  -->
         
-        <input type="number"  min="1" max="20"  [(ngModel)]="cartdata.qun" (ngModelChange)="KeyValueup(cartdata.price)">
+        <input type="number"  min="1" max="20"  [(ngModel)]="cartdata.qun" (ngModelChange)="KeyValueup(cartdata.price, cartdata.qun)">
         {{cartdata.qun | json}}
       </h3>        
       </div>
@@ -42,39 +42,11 @@
 <hr>
 </div>
 
-<button type="submit" class=" button button2" (click)="final_checkOut()">final checkout</button>
+<button type="submit" class=" button button2" (click)="get_array_from_child.emit(addcartdata)" 
+(click)="get_from_child_total.emit(abcd)" (click)="final_checkout_all_flags_false()">final checkout</button>
+</div>
 
 <div *ngIf="flag_of_lastpage">
 
-  <label>
-    address  line 1
-</label><input type="text">
-<br>
-<label>
-    address  line 1
-</label>
-<input type="text">
-<br>
-<label>select Your city</label>
-<select name="cars" id="cars">
-  <option value="volvo">Surat</option>
-  <option value="saab">Mumbai</option>
-  <option value="mercedes">Ahmedabad</option>
-  <option value="audi">Vapi</option>
-</select>
-
-<label>select Your State</label>
-<select name="cars" id="cars">
-  <option value="volvo">Gujarat</option>
-  <option value="saab">Maharastra</option>
-
-</select>
-
-<table border="1px">
-  <tr>
-    <td>Product Name</td>
-    <td>Price</td>
-    <td>Quantity</td>
-  </tr>
-</table>
+  
 </div>

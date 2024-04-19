@@ -18,7 +18,6 @@ export class AppComponent  implements OnInit{
     ngOnInit() {
       this.jsondata.jsonApiData().subscribe(i=>{
         this.json=i;
-   
       });
       this.arrayofobjectdat=this.json.products
     }
@@ -102,6 +101,10 @@ this.flagrating=false
 
 this.flagprice=false
 
+/////////////////////////////////
+this.dicount_result_flag_2=false
+this.rating_result_flag_2=false 
+this.price_result_flag_2=false
 
 
 }
@@ -119,8 +122,12 @@ this.dynamic_brand_resultflag=false
 this.flagdiscount=false
 this.fieldsetofdivflag=false
 this.flagrating=false
-
 this.flagprice=false
+/////////
+this.dicount_result_flag_2=false
+this.rating_result_flag_2=false 
+this.price_result_flag_2=false
+
 }
 
 
@@ -138,6 +145,13 @@ filterresultcategory(obj:any,ischecked:boolean){
   this.flagrating=false
   
   this.flagprice=false
+this.dicount_result_flag_2=false
+this.rating_result_flag_2=false 
+this.price_result_flag_2=false
+
+
+
+
 
 this.forlooparray=[]
  if(this.category_dynamic_data.includes(obj)){
@@ -170,26 +184,20 @@ public dynamic_brand_resultflag:boolean=false
 branddynamicbutton(){
   console.log('hi');
   this.uniquedata(this.arrayofobjectdat)
-  this.dynamic_flag_of_brand=true
 
- 
 
-  this.dynamiccategoryflag=false
+this.dynamic_flag_of_brand=true
+this.dynamiccategoryflag=false
 this.dynamic_category_resulrflag=false
-
-
-  this.dynamic_brand_resultflag=false
-
+this.dynamic_brand_resultflag=false
 this.flagdiscount=false
-
 this.fieldsetofdivflag=false
-
 this.flagrating=false
-
 this.flagprice=false
-
-
-
+//////////////////////////
+this.dicount_result_flag_2=false
+this.rating_result_flag_2=false 
+this.price_result_flag_2=false
   
 }
 
@@ -208,24 +216,25 @@ if(data.category.includes(this.drop_down_value)){
 
 brand_previous(){
 
-  this.dynamiccategoryflag=false // keep this true all else false
-  
-  this.dynamic_category_resulrflag=false
-  
+this.dynamiccategoryflag=false // keep this true all else false
+this.dynamic_category_resulrflag=false
 this.dynamic_flag_of_brand=true  
 this.dynamic_brand_resultflag=false
-
 this.flagdiscount=false
 this.fieldsetofdivflag=false
-
 this.flagrating=false
-
 this.flagprice=false
+//////////////////////////
+this.dicount_result_flag_2=false
+this.rating_result_flag_2=false 
+this.price_result_flag_2=false
+
+
 }
 
 
 when_checkbox_of_Brand_is_selected(object:any,ischecked:boolean){
-  this.dynamic_flag_of_brand=false
+this.dynamic_flag_of_brand=false
 
 this.dynamic_brand_resultflag=true
 
@@ -257,6 +266,16 @@ public dynamic_array:any=[]//api data into this
 public discount_arrays=[]
 when_dicount_button_click(){
   this.dynamic_discount_resultflag=true
+console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+
+
+
+
+
+
+
+
+
 this.dynamic_array=this.arrayofobjectdat
   this.dynamic_array.forEach((data:any)=>{
   })
@@ -372,8 +391,6 @@ categoryselectedbtn(){
       
   
     }
-  
-  
   }
   
  //===============Discount button ===================================
@@ -383,17 +400,37 @@ discountbtn(){
   this.flagprice=false
   this.flagrating=false
   this.flagcategory=false
-}
 
+
+  this.dynamiccategoryflag=false // keep this true all else false
+  
+  this.dynamic_category_resulrflag=false
+  
+this.dynamic_flag_of_brand=false
+this.dynamic_brand_resultflag=false
+
+this.fieldsetofdivflag=false
+////////////
+this.dicount_result_flag_2=false
+this.rating_result_flag_2=false 
+this.price_result_flag_2=false
+
+}
+public dicount_result_flag_2:boolean=false
 discountselectedbutton(){
   this.dynamiccategoryflag=false
   this.dynamic_category_resulrflag=false
 
   this.dynamic_flag_of_brand=false
   this.dynamic_brand_resultflag=false
+  this.fieldsetofdivflag=true
+this.dicount_result_flag_2=true
+  this.flagdiscount=false
+  this.flagprice=false
+  this.flagrating=false
+  this.flagcategory=false
   
   this.forlooparray=[]
-  this.fieldsetofdivflag=true
   if(this.discount1){
     console.log("discount 1 selected ")
     this.arrayofobjectdat.forEach((data:any)=>{
@@ -414,17 +451,67 @@ discountselectedbutton(){
   })
   }
 }
+
+
+discount_goto_previous(){
+  this.flagdiscount=true
+  this.flagprice=false
+  this.flagrating=false
+  this.flagcategory=false
+this.rating_result_flag_2=false
+  this.dicount_result_flag_2=false
+  this.dynamiccategoryflag=false // keep this true all else false
+  this.dynamic_category_resulrflag=false
+this.dynamic_flag_of_brand=false
+this.dynamic_brand_resultflag=false
+
+this.fieldsetofdivflag=false
+}
 //============================= rating button=========
 ratingsbtn(){
   this.flagrating=true
   this.flagdiscount=false
   this.flagprice=false
   this.flagcategory=false
-}
 
+  this.dynamiccategoryflag=false // keep this true all else false
+  
+  this.dynamic_category_resulrflag=false
+  
+this.dynamic_flag_of_brand=false
+this.dynamic_brand_resultflag=false
+
+this.fieldsetofdivflag=false
+
+
+///////////////////e false
+
+/////////
+this.dicount_result_flag_2=false
+this.rating_result_flag_2=false 
+this.price_result_flag_2=false
+
+
+
+
+
+}
+public rating_result_flag_2:boolean=false
 ratingbtnselectedbtn(){
-  this.forlooparray=[]
-  this.fieldsetofdivflag=true
+this.forlooparray=[]
+
+this.fieldsetofdivflag=false
+this.rating_result_flag_2=true
+this.flagdiscount=false
+this.flagprice=false
+this.flagrating=false
+this.flagcategory=false
+this.dynamiccategoryflag=false // keep this true all else false
+this.dynamic_category_resulrflag=false
+this.dynamic_flag_of_brand=false
+this.dynamic_brand_resultflag=false
+
+this.fieldsetofdivflag=false
   console.log("button hited")
       if(this.rating1){
       this.arrayofobjectdat.forEach((data:any)=>{
@@ -484,12 +571,41 @@ pricebtn(){
 
   this.flagrating=false
   this.flagcategory=false
-}
 
+  this.fieldsetofdivflag=false
+  this.rating_result_flag_2=false
+
+  this.dynamiccategoryflag=false // keep this true all else false
+  
+  this.dynamic_category_resulrflag=false
+  
+this.dynamic_flag_of_brand=false
+this.dynamic_brand_resultflag=false
+
+
+
+
+
+}
+public price_result_flag_2:boolean=false
 pricebtnselectedbtn(){
+this.price_result_flag_2=true
+this.flagprice=false
+this.flagdiscount=false
+this.flagrating=false
+this.flagcategory=false
+this.fieldsetofdivflag=false
+this.rating_result_flag_2=false
+this.dynamiccategoryflag=false 
+this.dynamic_category_resulrflag=false
+this.dynamic_flag_of_brand=false
+this.dynamic_brand_resultflag=false
+this.dicount_result_flag_2=false
+
+
+
 
   this.forlooparray=[]
-  this.fieldsetofdivflag=true
 
   if(this.under500){
     this.arrayofobjectdat.forEach((data:any)=>{
@@ -553,14 +669,20 @@ brandbtn(){
 //===============================================go to child ==================
 public valueoftotal:any=0
 public xyz:any
+public navbar_flag:boolean=true
+public checkout_unique_data:any[]=[]
+
 gotochild(){
   let abcd:any[] = []
 
+  this.navbar_flag=false
 
   this.dynamiccategoryflag=false
   this.dynamic_category_resulrflag=false
-
- 
+  this.dicount_result_flag_2=false
+ this.price_result_flag_2=false
+ this.rating_result_flag_2=false
+ this.dynamic_brand_resultflag=false
 
   if(this.addcartdata){
     this.addcartdata.forEach(zz=>{
@@ -570,16 +692,19 @@ gotochild(){
     this.valueoftotal=abcd.reduce(function(x:any,y:any){
       return x+y;
     },0)
+
     this.childcomponent1=true
     this.flagcategory= false
     this.flagdiscount=false
     this.flagrating=false
     this.flagprice=false
+    this.checkout_unique_data=this.addcartdata.filter((value, index, array) => array.indexOf(value) === index);
+  
   }
    if(!this.addcartdata ||this.addcartdata.length==0){
     alert('please select something first')
     this.childcomponent1=false
-    
+    this.navbar_flag=true
    }
 
    this.xyz=Object.keys(this.forlooparray).length;
@@ -588,7 +713,6 @@ gotochild(){
 
 }
 
-public hello :any ="you selected"
 
 
 
@@ -603,26 +727,63 @@ public hello :any ="you selected"
 
 
 
+rating_go_previous(){
+this.fieldsetofdivflag=false
+this.rating_result_flag_2=false
+this.flagdiscount=false
+this.flagprice=false
+this.flagrating=true
+this.flagcategory=false
+this.dynamiccategoryflag=false 
+this.dynamic_category_resulrflag=false
+this.dynamic_flag_of_brand=false
+this.dynamic_brand_resultflag=false
+this.price_result_flag_2=false
+
+}
 
 
+price_go_previous(){
+
+this.fieldsetofdivflag=false
+this.rating_result_flag_2=false
+this.flagdiscount=false
+this.flagprice=true
+this.flagrating=false
+this.flagcategory=false
+this.dynamiccategoryflag=false 
+this.dynamic_category_resulrflag=false
+this.dynamic_flag_of_brand=false
+this.dynamic_brand_resultflag=false
+this.price_result_flag_2=false
+}
 
 
+public array_of_products:any[]=[]
 
+get_array_from_child(child_array:any){
+  child_array.forEach((data:any)=>{
+    console.log(data);
+    data.multily=data.qun*data.price
+    this.array_of_products.push(data)
+   
+  })
 
+  console.log("miiiiiiiiiiiiiiii"+this.array_of_products);
+  
+  
+}
 
+public last_page_flag:boolean=false
 
+public tot:number=0
+get_from_child_total(total:any){
+  
+  this.tot=total
 
-
-
-
-
-
-
-
-
-
-
-
+  console.log("TOTAL ISSSSS"+total);
+this.last_page_flag=true
+}
 
 
 
